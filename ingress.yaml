@@ -7,7 +7,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: ec2-54-149-213-244.us-west-2.compute.amazonaws.com
+    - host: ec2-52.10.79.134.us-west-2.compute.amazonaws.com
       http:
         paths:
           - path: /
@@ -17,7 +17,7 @@ spec:
                 name: frontend-service
                 port:
                   number: 80
-    - host: ec2-54-149-213-244.us-west-2.compute.amazonaws.com
+    - host: ec2-52.10.79.134.us-west-2.compute.amazonaws.com
       http:
         paths:
           - path: /api
