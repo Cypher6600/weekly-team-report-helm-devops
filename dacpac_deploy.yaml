@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dacpac
+spec:
+  template:
+    metadata:
+      labels:
+        app: dacpac
+    spec:
+      containers:
+        - name: dacpac-pod
+          image: 529396670287.dkr.ecr.us-west-2.amazonaws.com/dacpac:latest
+          ports:
+            - containerPort: 1443
+          env:
+          - name: TargetServerName
+          value: 'mssql-service'
+          - name: TargetDatabaseName
+          value: 'WeeklyReport'
+          - name: TargetUser
+          value: 'sa'
+          - name: TargetPassword
+          value: 'Password.'
+      restartPolicy: Never
+            
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dacpac-service
+spec:
+  type: ClusterIP
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 1443
+      targetPort: 1443
