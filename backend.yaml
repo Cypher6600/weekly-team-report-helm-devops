@@ -15,13 +15,12 @@ spec:
       containers:
         - name: backend-pod
           image: 529396670287.dkr.ecr.us-west-2.amazonaws.com/back_end:latest
-          env:
-          - name: ASPNETCORE_ENVIRONMENT 
-            value: Kubernetes
           ports:
             - containerPort: 80
-          
-
+          env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: 'Kubernetes'
+            
 ---
 apiVersion: v1
 kind: Service
